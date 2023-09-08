@@ -36,15 +36,15 @@ app.post('/api/users', async(req, res) => {
         if (newData._id) {
           // Update existing document based on _id
           const query = { _id: newData._id };
-          if(newData.task!==""){
-          await TodoModel.updateOne(query, { task: newData.task });
+          if(newData.name!==""){
+          await TodoModel.updateOne(query, { name: newData.name });
           }
           else{
             await TodoModel.deleteOne(query)
           }
         } else {
           // Insert new document
-          const newTask = new TodoModel({ task: newData.task });
+          const newTask = new TodoModel({ name: newData.name });
           await newTask.save();
         }
       }
