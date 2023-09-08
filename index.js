@@ -17,7 +17,9 @@ app.get('/', (req, res) => {
 app.get("/allData",async(req,res)=>{
   try{
     const data = await TodoModel.find();
-    res.json(data)
+      const res= admins.map((admin) => admin.toObject()); // Convert to plain JavaScript objects before returning
+
+    res.json(res)
   }
   catch(err){
     console.log(err)
