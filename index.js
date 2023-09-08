@@ -11,8 +11,18 @@ app.use(express.json());
 
 // GET route
 app.get('/', (req, res) => {
+
   res.json({ message: 'Hello, World!' });
 });
+app.get("/allData",async(req,res)=>{
+  try{
+    const data = await TodoModel.find();
+    res.json(data)
+  }
+  catch(err){
+    console.log(err)
+  }
+})
 
 // POST route
 app.post('/api/users', async(req, res) => {
